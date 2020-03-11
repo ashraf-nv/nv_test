@@ -1,0 +1,6 @@
+framework module nv_test {
+  umbrella header "nv_test-umbrella.h"
+
+  export *
+  module * { export * }
+}

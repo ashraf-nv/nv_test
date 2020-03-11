@@ -1,0 +1,16 @@
+PODS:
+  - nv_test (0.1.0)
+
+DEPENDENCIES:
+  - nv_test (from `../`)
+
+EXTERNAL SOURCES:
+  nv_test:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  nv_test: 0c47c706888cbbda4a874fc7cce840eeeb798976
+
+PODFILE CHECKSUM: 00bcc18f2cdd1643aeece9cac371de95aacc9f41
+
+COCOAPODS: 1.9.0
