@@ -1,0 +1,6 @@
+use_frameworks!
+target 'nv_test_Tests' do
+  pod 'nv_test', :path => '../'
+  
+  
+end
