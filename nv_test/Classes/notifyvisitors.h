@@ -9,17 +9,55 @@
 
 
 #import <Foundation/Foundation.h>
-#import <AdSupport/AdSupport.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+
 typedef void(^NotificationListData)(NSMutableArray* _Nullable);
 typedef void(^nvGetCount)(NSInteger);
 typedef void(^NotificationClickResponseData)(NSMutableDictionary* _Nullable);
-extern  NSString * _Nonnull  NVInAppViewConroller;
+typedef void(^nv_UID)(NSString *_Nullable);
+//extern  NSString * _Nonnull  NVInAppViewController1;
+
+@protocol notifyvisitorsDelegate <NSObject>
+
+@optional
+-(void)NotifyvisitorsChatBotActionCallbackWithUserInfo:(NSDictionary*_Nullable)userInfo;
+
+-(void)NotifyvisitorsGetEventResponseWithUserInfo:(NSDictionary*_Nullable)userInfo;
+@end
+
+@interface NVCenterStyleConfig : NSObject
+
+@property (strong, nonatomic, nullable)UIColor *unselectedTabTextColor;
+
+@property (strong, nonatomic, nullable)UIColor *selectedTabTextColor;
+
+@property (strong, nonatomic, nullable)UIColor *selectedTabBgColor;
+@property (strong, nonatomic, nullable)UIColor *unselectedTabBgColor;
+
+@property (nonatomic)NSInteger selectedTabIndex;
+@property (strong, nonatomic, nullable)UIFont *tabTextfont;
+//@property (strong, nonatomic, nullable)UIFont *tabBadgeCountfont;
+@property (strong, nonatomic, nullable)UIColor *tabBadgeCountBorderColor;
+@property (strong, nonatomic, nullable)UIColor *tabBadgeCountFillColor;
+@property (strong, nonatomic, nullable)UIColor *tabBadgeCountTextColor;
+@property (nonatomic)BOOL shouldTabBadgeShine;
+
++(instancetype _Nullable )sharedInstance;
+
+-(void)setFirstTabWithTabLable:(NSString *_Nonnull)tabLabel TagDisplayName:(NSString *_Nonnull)tabDisplayName;
+
+-(void)setSecondTabWithTabLable:(NSString *_Nonnull)tabLabel TagDisplayName:(NSString *_Nonnull)tabDisplayName;
+
+-(void)setThirdTabWithTabLable:(NSString *_Nonnull)tabLabel TagDisplayName:(NSString *_Nonnull)tabDisplayName;
+
+@end
+
+
+
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 #import <UserNotifications/UserNotifications.h>
-
 @interface notifyvisitors : NSObject <UNUserNotificationCenterDelegate>
 
 //# << iOS 10 Push notification delegate and service extension methods
@@ -38,17 +76,21 @@ extern  NSString * _Nonnull  NVInAppViewConroller;
 
 @interface notifyvisitors : NSObject
 #endif
+@property (nonatomic, weak)id <notifyvisitorsDelegate> _Nullable delegate;
+
++(instancetype _Nullable )sharedInstance;
 +(void)Initialize:(NSString *_Nullable)nvMode;
 
 +(void)RegisterPushWithDelegate:(id _Nullable)delegate App:(UIApplication * _Nullable)application launchOptions:(NSDictionary *_Nullable)launchOptions;
 +(void)DidRegisteredNotification:(UIApplication *_Nullable)application deviceToken:(NSData * _Nullable)deviceToken;
-+(void)didReceiveRemoteNotificationWithUserInfofor_iOS7orBelow:(NSDictionary * _Nullable)userInfo;
++(void)didReceiveRemoteNotificationWithUserInfofor_iOS7orBelow:(NSDictionary *_Nullable)userInfo;
+
 +(void)didReceiveRemoteNotificationWithUserInfo:(NSDictionary * _Nullable)userInfo;
 
-+(NSMutableDictionary * _Nullable)PushNotificationActionDataFromUserInfo:(NSDictionary * _Nullable)userinfo;
++(NSMutableDictionary * _Nullable)PushNotificationActionDataFromUserInfo:(NSDictionary *_Nullable)userinfo;
 
 +(void)OpenUrlWithApplication:(UIApplication *_Nullable)application Url:(NSURL *_Nullable)url;
-+(NSMutableDictionary* _Nullable)OpenUrlGetDataWithApplication:(UIApplication * _Nullable)application Url:(NSURL * _Nullable)url;
++(NSMutableDictionary* _Nullable)OpenUrlGetDataWithApplication: (UIApplication * _Nullable)application Url:(NSURL * _Nullable)url;
 
 +(void)Show:(NSMutableDictionary * _Nullable)UserTokens CustomRule:(NSMutableDictionary  * _Nullable)customRule;
 +(void)UserIdentifier:(NSString *_Nullable) userID UserParams:(NSMutableDictionary * _Nullable) UserParams;
@@ -59,18 +101,21 @@ extern  NSString * _Nonnull  NVInAppViewConroller;
 
 +(void)schedulePushNotificationwithNotificationID:(NSString * _Nullable)NID Tag:(NSString * _Nullable)tag TimeinSecond:(NSString * _Nullable)time Title:(NSString * _Nullable)title  Message:(NSString * _Nullable)message URL:(NSString * _Nullable)url  Icon:(NSString * _Nullable)icon;
 
-+(void)checkFetchClickComplete:(NSTimer * _Nullable)timer;
++(void)pushPreferences:(NSArray*_Nullable)preferenceList;
+//+(void)checkFetchClickComplete:(NSTimer * _Nullable)timer;
 +(void)NotifyVisitorsNotificationCentre;
++(void)notificationCenterWithConfiguration:(NVCenterStyleConfig *_Nullable)configuration;
+
+
 +(void)GetUnreadPushNotification:(nvGetCount _Nullable )UnreadCount;
 
 //+(NSInteger)GetUnreadPushNotification;
-+(UIViewController* _Nullable) topMostController;
 //+(NSMutableArray * _Nullable)GetNotificationCentreData;
 + (void)GetNotificationCentreData:(NotificationListData _Nullable) notificationDataList;
 
 +(void)NotifyVisitorsGeofencing;
 
-+(void)NotifyVisitorsGeofencingReceivedNotificationWithApplication: (UIApplication * _Nullable) application window:(UIWindow * _Nullable) window didReceiveGeofencingNotification:(UILocalNotification * _Nullable) notification;
++(void) NotifyVisitorsGeofencingReceivedNotificationWithApplication: (UIApplication * _Nullable) application window: (UIWindow * _Nullable) window didReceiveGeofencingNotification:(UILocalNotification * _Nullable) notification;
 
 +(void)HandleLocalNotifications: (UILocalNotification *_Nullable) notification;
 
@@ -83,10 +128,42 @@ extern  NSString * _Nonnull  NVInAppViewConroller;
 +(void)applicationDidEnterBackground:(UIApplication *_Nullable)application;
 +(void)applicationDidBecomeActive:(UIApplication *_Nullable)application;
 +(void)applicationWillEnterForeground:(UIApplication *_Nullable)application;
++(void)applicationWillTerminate;
 
 +(void)DismissAllNotifyvisitorsInAppNotifications;
 +(void)StopInAppNotifications;
-+(void)applicationWillTerminate;
 +(void)stopPushNotification:(BOOL)pushStatus;
 +(void)stopGeofencePushforDateTime:(NSString *_Nullable)nvDateTime additionalHours: (NSInteger)nvtimeinHours;
+//+(void)setChatBotDelegate:(id _Nullable)aDelegate;
+
+
++(void)startChatBotWithScreenName: (NSString *_Nullable)nvBotScreenName;
++(void)getNvUid:(nv_UID _Nullable)nvUID;
++(void)requestAppleAppStoreInAppReview;
+
+
+
+
 @end
+
+
+
+
+
+//
+//@property (nonatomic, strong, nullable) NSString *title;
+//@property (nonatomic, strong, nullable) UIColor *backgroundColor;
+//@property (nonatomic, strong, nullable) NSArray *messageTags;
+//@property (nonatomic, strong, nullable) UIColor *navigationBarTintColor;
+//@property (nonatomic, strong, nullable) UIColor *navigationTintColor;
+//@property (nonatomic, strong, nullable) UIColor *tabSelectedBgColor;
+//@property (nonatomic, strong, nullable) UIColor *tabSelectedTextColor;
+//@property (nonatomic, strong, nullable) UIColor *tabUnSelectedTextColor;
+//@property (nonatomic, strong, nullable) NSString *noMessageViewText;
+//@property (nonatomic, strong, nullable) UIColor *noMessageViewTextColor;
+//@property (nonatomic, strong, nullable) NSString *firstTabTitle;
+//
+
+//
+//
+//
