@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'nv_test'
-  s.version          = '6.3.2'
+  s.version          = '7.0.1'
   s.summary          = 'Best multi channel Customer Engagement Software for Your Business'
 
 # This description is used to generate tags and improve search results.
@@ -29,11 +29,13 @@ Notifyvisitors is simplest marketing automation software to send personalised pu
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   s.platform = :ios
-  s.ios.deployment_target = '9.0'
-  s.source_files = 'nv_test/Classes/**/*.h'
-  s.resources = ['nv_test/Assets/**/*.png', 'nv_test/Classes/nvResourceValues.plist']
-  s.vendored_library = 'nv_test/Classes/**/*.a'
+  s.ios.deployment_target = '11.0'
+  s.vendored_frameworks = "nv_test/nvframework/notifyvisitors_7_0_1.xcframework"
+#  s.source_files = 'nv_test/Classes/**/*.h'
+#  s.resources = ['nv_test/Assets/**/*.png', 'nv_test/Classes/nvResourceValues.plist']
+#  s.vendored_library = 'nv_test/Classes/**/*.a'
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.requires_arc = true
+#  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+#  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
