@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2567036F2418C60B00E310F6 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 2567036B2418C60B00E310F6 /* .gitkeep */; };
 		28FEA453FBDEE8E7BD2E90C1CA425A32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		359B396A2B209CD5001A936A /* notifyvisitors_7_0_1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359B39692B209CD5001A936A /* notifyvisitors_7_0_1.xcframework */; };
+		359B39742B20A553001A936A /* notifyvisitors_7_0_1.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359B39732B20A553001A936A /* notifyvisitors_7_0_1.xcframework */; };
 		5DA20E527AF718274B116B263CDB231B /* Pods-nv_test_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A13DD94C947AEFA9BDA1C247BDCFDF7E /* Pods-nv_test_Tests-dummy.m */; };
 		5FE525F71F740A786B5BF81DC16504FE /* Pods-nv_test_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8E18A3162596E500041976C4516A9BB /* Pods-nv_test_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6368DDB348707F057E8062CE2ED8DBAC /* nv_test-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE3D0D7A2390F2458D21F11FBF33E61 /* nv_test-dummy.m */; };
@@ -32,7 +32,7 @@
 		2567036B2418C60B00E310F6 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		2A6157E29D7D40A57D21CA2903272D00 /* nv_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nv_test.debug.xcconfig; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		359B39692B209CD5001A936A /* notifyvisitors_7_0_1.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = notifyvisitors_7_0_1.xcframework; sourceTree = "<group>"; };
+		359B39732B20A553001A936A /* notifyvisitors_7_0_1.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = notifyvisitors_7_0_1.xcframework; sourceTree = "<group>"; };
 		359BB8A65C2AB9B4A4F2F278A8CC396F /* nv_test-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nv_test-prefix.pch"; sourceTree = "<group>"; };
 		444E93902EBCC1B2B4489AF95B2A6397 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4F1ABEEE08B9684833473301ED27D146 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359B396A2B209CD5001A936A /* notifyvisitors_7_0_1.xcframework in Frameworks */,
+				359B39742B20A553001A936A /* notifyvisitors_7_0_1.xcframework in Frameworks */,
 				EC24A637EB5691E7B0CF4CB15BAAE603 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +139,6 @@
 		8019D492037FD4ECF62EDDAD902A0EA7 /* nv_test */ = {
 			isa = PBXGroup;
 			children = (
-				359B39692B209CD5001A936A /* notifyvisitors_7_0_1.xcframework */,
 				256703712418C61C00E310F6 /* Assets */,
 				256703682418C60B00E310F6 /* Classes */,
 				15F180750F2F98124CE878210CA431A6 /* Pod */,
@@ -176,6 +175,7 @@
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				359B39732B20A553001A936A /* notifyvisitors_7_0_1.xcframework */,
 				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
 			);
 			name = iOS;

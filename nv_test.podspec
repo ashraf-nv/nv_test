@@ -31,6 +31,8 @@ Notifyvisitors is simplest marketing automation software to send personalised pu
   s.platform = :ios
   s.ios.deployment_target = '11.0'
   s.requires_arc = true
+  s.ios.vendored_library = 'frameworks/notifyvisitors_7_0_1.xcframework'
+# s.ios.vendored_frameworks = 'frameworks/notifyvisitors_7_0_1.xcframework'
 #  s.preserve_paths = 'nv_test/Classes/notifyvisitors_7_0_1.xcframework'
 #  s.vendored_frameworks = 'nv_test/Classes/notifyvisitors_7_0_1.xcframework"
   
@@ -39,9 +41,11 @@ Notifyvisitors is simplest marketing automation software to send personalised pu
 
 #  s.vendored_library = 'nv_test/Classes/**/*.a'
 #  s.vendored_library = '**/notifyvisitors_7_0_1.xcframework'
-  s.vendored_frameworks = '**/notifyvisitors_7_0_1.xcframework'
+#    s.ios.vendored_frameworks = 'Frameworks/MyFramework.framework'
 
-s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
+ 
+
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
