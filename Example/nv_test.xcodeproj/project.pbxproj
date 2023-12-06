@@ -150,6 +150,7 @@
 				ORGANIZATIONNAME = "ashraf-nv";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
+						DevelopmentTeam = 4JW4924F8P;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -327,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA4EEA69BC3CE8353B3E233F /* Pods-nv_test_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 4JW4924F8P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -351,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FEA4D4F27FF42B79A79DA7B /* Pods-nv_test_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 4JW4924F8P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
